@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="items" template="Dauer_GiftMessagePlusFrontendUi::email/items.phtml">
+            <arguments>
+                <argument name="strip_tags_view_model" xsi:type="object">Dauer\GiftMessagePlusFrontendUi\ViewModel\RemoveScriptTags</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

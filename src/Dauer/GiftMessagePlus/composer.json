@@ -1,0 +1,25 @@
+{
+  "name": "dauer/module-gift-message-plus",
+  "version": "1.0.0",
+  "description": "Create an additional element for gift message",
+  "type": "magento2-module",
+  "require": {
+      "dauer/module-gift-message-plus-api": "*",
+      "dauer/module-gift-message-plus-frontend-ui": "*",
+      "magento/framework": "*",
+      "magento/module-gift-message": "*",
+      "magento/module-checkout": "*",
+      "magento/module-ui": "*",
+      "magento/module-config": "*",
+      "magento/module-payment": "*",
+      "magento/module-store": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\GiftMessagePlus\\": ""
+    }
+  }
+}

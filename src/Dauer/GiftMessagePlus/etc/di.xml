@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Config Provider implementation -->
+    <preference for="Dauer\GiftMessagePlusApi\Api\Config\ConfigProviderInterface"
+                type="Dauer\GiftMessagePlus\Model\Config\ConfigProvider"/>
+
+    <!-- Editor Config Data implementation -->
+    <preference for="Dauer\GiftMessagePlusApi\Api\Data\Config\EditorConfigDataInterface"
+                type="Dauer\GiftMessagePlus\Model\Config\Data\EditorConfigData"/>
+
+    <!-- TinyMCE component configuration -->
+    <type name="Dauer\GiftMessagePlus\Model\Config\ConfigProvider">
+        <arguments>
+            <argument name="plugins" xsi:type="array">
+                <item name="table" xsi:type="string">table</item>
+                <item name="save" xsi:type="string">save</item>
+                <item name="insertdatetime" xsi:type="string">insertdatetime</item>
+                <item name="searchreplace" xsi:type="string">searchreplace</item>
+                <item name="directionality" xsi:type="string">directionality</item>
+                <item name="fullscreen" xsi:type="string">fullscreen</item>
+                <item name="visualchars" xsi:type="string">visualchars</item>
+                <item name="nonbreaking" xsi:type="string">nonbreaking</item>
+            </argument>
+            <argument name="additionalSettings" xsi:type="array">
+                <item name="paste_data_images" xsi:type="boolean">false</item>
+                <item name="paste_block_drop" xsi:type="boolean">false</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

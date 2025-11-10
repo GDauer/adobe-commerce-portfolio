@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <referenceBlock name="sales_order_tabs">
+                <referenceBlock name="order_tab_info">
+                    <referenceBlock name="gift_options">
+                        <referenceBlock name="order_giftmessage" template="Dauer_GiftMessagePlusFrontendUi::order/view/giftmessage.phtml">
+                            <arguments>
+                                <argument name="gift_plus_view_model" xsi:type="object">Dauer\GiftMessagePlusFrontendUi\ViewModel\AddConfigurationToAdminArea</argument>
+                            </arguments>
+                        </referenceBlock>
+                    </referenceBlock>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceBlock name="order_tab_info">
+            <referenceBlock name="popup_window">
+                <referenceBlock name="gift_options_form" template="Dauer_GiftMessagePlusFrontendUi::gift_options_form.phtml">
+                    <arguments>
+                        <argument name="gift_plus_view_model" xsi:type="object">Dauer\GiftMessagePlusFrontendUi\ViewModel\AddConfigurationToAdminArea</argument>
+                    </arguments>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceBlock>
+    </body>
+</page>
+
+

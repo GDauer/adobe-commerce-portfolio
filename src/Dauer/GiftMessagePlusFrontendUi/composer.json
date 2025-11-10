@@ -1,0 +1,21 @@
+{
+  "name": "dauer/module-gift-message-plus-frontend-ui",
+  "version": "1.0.0",
+  "description": "Gift message plus Frontend",
+  "type": "magento2-module",
+  "require": {
+      "dauer/module-gift-message-plus-api": "*",
+      "magento/framework": "*",
+      "magento/module-checkout": "*",
+      "magento/module-ui": "*",
+      "magento/module-gift-message": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\GiftMessagePlusFrontendUi\\": ""
+    }
+  }
+}

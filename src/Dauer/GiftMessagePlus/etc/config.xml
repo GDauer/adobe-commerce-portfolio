@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sales>
+            <gift_options>
+                <gift_message_plus>
+                    <enabled>0</enabled>
+                    <max_length>255</max_length>
+                </gift_message_plus>
+            </gift_options>
+        </sales>
+    </default>
+</config>

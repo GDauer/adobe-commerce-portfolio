@@ -1,0 +1,17 @@
+{
+  "name": "dauer/module-gift-message-plus-api",
+  "version": "1.0.0",
+  "description": "API module for the Gift Message Plus feature",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\GiftMessagePlusApi\\": ""
+    }
+  }
+}

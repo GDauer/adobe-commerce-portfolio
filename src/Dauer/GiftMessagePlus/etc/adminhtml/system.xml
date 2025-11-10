@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sales">
+            <group id="gift_options">
+                <group id="gift_message_plus" translate="label comment" sortOrder="40" showInDefault="1" showInWebsite="1">
+                    <label>Gift Message Plus</label>
+                    <comment>Enables the formatting component for gift messages, allowing for more sophisticated messaging.</comment>
+                    <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" canRestore="1">
+                        <label>Enable Gift Message Plus</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="max_length" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
+                        <label>Max Message Length</label>
+                        <validate>required-number validate-zero-or-greater validate-number</validate>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>
