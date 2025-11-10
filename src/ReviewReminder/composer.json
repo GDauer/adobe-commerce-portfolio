@@ -1,0 +1,19 @@
+{
+  "name": "dauer/module-review-reminder",
+  "version": "1.0.0",
+  "description": "Send marketing emails for customer to reminder to review products",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+      "magento/module-sales": "*",
+      "magento/module-backend": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\ReviewReminder\\": ""
+    }
+  }
+}

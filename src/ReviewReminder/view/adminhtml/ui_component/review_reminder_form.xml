@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">review_reminder_form.review_reminder_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Review Reminder</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>review_reminder_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>review_reminder_form.review_reminder_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="saveButton" class="Dauer\ReviewReminder\Block\Adminhtml\Form\SaveButton"/>
+            <button name="cancelButton" class="Dauer\ReviewReminder\Block\Adminhtml\Form\CancelButton"/>
+        </buttons>
+    </settings>
+    <dataSource name="review_reminder_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="reviewreminder/listing/save"/>
+        </settings>
+        <dataProvider class="ReviewReminderDataProvider" name="review_reminder_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="identifier" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Identifier</label>
+                <dataScope>identifier</dataScope>
+            </settings>
+        </field>
+        <field name="product_skus" sortOrder="15" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Product SKUs (Comma separated list)</label>
+                <dataScope>product_skus</dataScope>
+            </settings>
+        </field>
+        <field name="customer_group_id" sortOrder="20" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Group</label>
+                <dataScope>customer_group_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Dauer\ReviewReminderFrontendUi\Ui\Component\Form\CustomerGroupOptions"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="start_date" sortOrder="30" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start Date</label>
+                <dataScope>start_date</dataScope>
+            </settings>
+        </field>
+        <field name="end_date" sortOrder="40" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <dataScope>end_date</dataScope>
+            </settings>
+        </field>
+        <field name="entity_id" sortOrder="90" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity Id</label>
+                <dataScope>entity_id</dataScope>
+            </settings>
+        </field>
+        <field name="is_email_sent" sortOrder="100" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">review</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

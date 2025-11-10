@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Service Contract for Review Reminder -->
+    <preference for="Dauer\ReviewReminderApi\Api\Data\ReviewReminderInterface"
+                type="Dauer\ReviewReminder\Model\ReviewReminder"/>
+
+    <!-- Service Contract for ReviewReminderRepository -->
+    <preference for="Dauer\ReviewReminderApi\Api\ReviewReminderRepositoryInterface"
+                type="Dauer\ReviewReminder\Model\Repository\ReviewReminderRepository"/>
+
+    <!-- Service Contract for DeleteReviewReminderCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\DeleteReviewReminderCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\DeleteReviewReminderCommand"/>
+
+    <!-- Service Contract for SaveReviewReminderCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\SaveReviewReminderCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\SaveReviewReminderCommand"/>
+
+    <!-- Service Contract for GetReviewReminderCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\GetReviewReminderCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\GetReviewReminderCommand"/>
+
+    <!-- Service Contract for GetListReviewReminderCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\GetListReviewReminderCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\GetListReviewReminderCommand"/>
+
+    <!-- Service Contract for GetCustomerListForDispatchCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\GetCustomerListForDispatchCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\GetCustomerListForDispatchCommand"/>
+
+    <!-- Service Contract for GetQueueDataCommand -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\Queue\GetQueueDataCommandInterface"
+                type="Dauer\ReviewReminder\Model\Command\Queue\GetQueueDataCommand"/>
+
+    <!-- Service Contract SentReviewReminderMail -->
+    <preference for="Dauer\ReviewReminderApi\Api\Command\Mail\SentReviewReminderMailInterface"
+                type="Dauer\ReviewReminder\Model\Command\Mail\SentReviewReminderMail"/>
+
+    <!-- Data Source search result type -->
+    <virtualType name="ReviewReminderSearchResult" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Dauer\ReviewReminder\Model\ResourceModel\ReviewReminder\Collection</argument>
+            <argument name="mainTable" xsi:type="string">dauer_review_reminder</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Data Provider -->
+    <virtualType name="ReviewReminderDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        </arguments>
+    </virtualType>
+
+
+    <!-- Inject collection to data provider -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="review_reminder_grid_data_source" xsi:type="string">ReviewReminderSearchResult</item>
+                <item name="review_reminder_form_data_source" xsi:type="string">ReviewReminderSearchResult</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Configure batch size for queue publisher -->
+    <type name="Dauer\ReviewReminder\Cron\SendReviewReminderItemsToQueue">
+        <arguments>
+            <argument name="batchSize" xsi:type="number">100</argument>
+        </arguments>
+    </type>
+</config>

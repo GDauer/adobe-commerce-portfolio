@@ -1,0 +1,17 @@
+{
+  "name": "dauer/module-review-reminder-api",
+  "version": "1.0.0",
+  "description": "API interface modules",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\ReviewReminderApi\\": ""
+    }
+  }
+}

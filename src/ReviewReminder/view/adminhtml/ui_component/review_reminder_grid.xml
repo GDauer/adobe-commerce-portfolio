@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">review_reminder_grid.review_reminder_grid_data_source</item>
+            <item name="deps" xsi:type="string">review_reminder_grid.review_reminder_grid_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/edit"/>
+                <class>primary</class>
+                <label translate="true">Add New</label>
+            </button>
+        </buttons>
+        <spinner>review_reminder_grid_columns</spinner>
+        <deps>
+            <dep>review_reminder_grid.review_reminder_grid_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="review_reminder_grid_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Dauer_ReviewReminder::listing</aclResource>
+        <dataProvider class="ReviewReminderDataProvider" name="review_reminder_grid_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <actionDelete>
+            <settings>
+                <label translate="true">Delete Item</label>
+            </settings>
+        </actionDelete>
+    </listingToolbar>
+    <columns name="review_reminder_grid_columns">
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="identifier">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Identifier</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="customer_group_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Customer Group Id</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="product_skus">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">SKUs</label>
+            </settings>
+        </column>
+        <column name="start_date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Start Date</label>
+            </settings>
+        </column>
+        <column name="end_date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">End Date</label>
+            </settings>
+        </column>
+        <column name="is_email_sent" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Has email already being sent?</label>
+            </settings>
+        </column>
+        <column name="created_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="updated_at">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Updated At</label>
+            </settings>
+        </column>
+        <actionsColumn name="edit" class="Magento\Sales\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">reviewreminder/listing/edit</item>
+                    <item name="urlEntityParamName" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+        <actionsColumn name="actions" class="Dauer\ReviewReminder\Block\Adminhtml\Form\DeleteAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="deleteUrlPath" xsi:type="string">reviewreminder/listing/delete</item>
+                    <item name="urlEntityParamName" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

@@ -1,0 +1,19 @@
+{
+    "dauer_review_reminder": {
+        "column": {
+            "entity_id": true,
+            "identifier": true,
+            "customer_group_id": true,
+            "product_skus": true,
+            "start_date": true,
+            "end_date": true,
+            "created_at": true,
+            "updated_at": true,
+            "is_email_sent": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DAUER_REVIEW_REMINDER_CSTR_GROUP_ID_CSTR_GROUP_CSTR_GROUP_ID": true
+        }
+    }
+}

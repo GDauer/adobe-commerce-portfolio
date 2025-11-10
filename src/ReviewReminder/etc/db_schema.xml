@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Gustavo Dauer <gustavo.dauer@hotmail.com>
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="dauer_review_reminder" resource="default" engine="innodb" comment="Review Reminder Table">
+        <column xsi:type="int" name="entity_id" identity="true" unsigned="true" nullable="false" comment="Entity ID"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255" comment="Rule identifier"/>
+        <column xsi:type="boolean" name="is_email_sent" nullable="false" default="false" comment="Flag to know if e-mail has been sent already" />
+        <column xsi:type="int" name="customer_group_id" nullable="true" unsigned="true" comment="Customer Group ID"/>
+        <column xsi:type="text" name="product_skus" nullable="true" comment="Specific Product SKUs (comma-separated)"/>
+        <column xsi:type="datetime" name="start_date" nullable="false" comment="Start Date"/>
+        <column xsi:type="datetime" name="end_date" nullable="false" comment="End Date"/>
+        <column xsi:type="timestamp" name="created_at" default="CURRENT_TIMESTAMP" on_update="false"/>
+        <column xsi:type="timestamp" name="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="FK_REVIEW_REMINDER_CUSTOMER_GROUP"
+                    table="dauer_review_reminder"
+                    column="customer_group_id"
+                    referenceTable="customer_group"
+                    referenceColumn="customer_group_id"
+                    onDelete="CASCADE"
+        />
+    </table>
+</schema>

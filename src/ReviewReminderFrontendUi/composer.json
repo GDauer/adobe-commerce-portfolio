@@ -1,0 +1,19 @@
+{
+  "name": "dauer/module-review-reminder-frontend-ui",
+  "version": "1.0.0",
+  "description": "Frontend component of Review Reminder",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+      "dauer/module-review-reminder": "*",
+      "magento/module-customer": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dauer\\ReviewReminderFrontendUi\\": ""
+    }
+  }
+}

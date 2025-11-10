@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
+    <topic name="dauer.review.reminder" request="string">
+        <handler name="dauer.review.reminder.handler"
+                 type="Dauer\ReviewReminder\Model\Queue\Handler\Handler"
+                 method="execute"/>
+    </topic>
+</config>
