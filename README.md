@@ -1,8 +1,38 @@
-# 🧩 Adobe Commerce Portfolio
+<p align="center">
+  <img src="https://devfan.co.uk/wp-content/uploads/2025/05/Adobe-Commerce-icon.png" alt="Adobe Commerce Logo" width="180"/>
+</p>
 
-[![PHP Version](https://img.shields.io/badge/PHP-8.3-blue.svg)](https://www.php.net/)
-[![MariaDB Version](https://img.shields.io/badge/MariaDB-11.4-green.svg)](https://mariadb.org/)
-[![RabbitMQ Version](https://img.shields.io/badge/RabbitMQ-4.1-orange.svg)](https://www.rabbitmq.com/)
+<h1 align="center">Adobe Commerce Portfolio</h1>
+<p align="center">
+  <a href="https://business.adobe.com/products/magento/magento-commerce.html">
+    <img src="https://img.shields.io/badge/Adobe_Commerce-2.4.8-CC0000.svg?logo=adobe&logoColor=white" alt="Adobe Commerce Version"/>
+  </a>
+  <a href="https://www.php.net/">
+    <img src="https://img.shields.io/badge/PHP-8.3-blue.svg" alt="PHP Version"/>
+  </a>
+  <a href="https://mariadb.org/">
+    <img src="https://img.shields.io/badge/MariaDB-11.4-green.svg" alt="MariaDB Version"/>
+  </a>
+  <a href="https://www.rabbitmq.com/">
+    <img src="https://img.shields.io/badge/RabbitMQ-4.1-orange.svg" alt="RabbitMQ Version"/>
+  </a>
+</p>
+
+---
+
+## 📚 Table of Contents
+- [📘 Project Overview](#-project-overview)
+- [🧱 Tech Stack](#-tech-stack)
+- [✨ Features](#-features)
+    - [🏷️ Gift Message Plus](#-gift-message-plus)
+    - [📨 Review Reminder](#-review-reminder)
+- [🧠 Learning Objectives](#-learning-objectives)
+- [⚙️ Setup & Installation](#-setup--installation)
+- [🧪 Example Use Cases](#-example-use-cases)
+- [🤝 Contributing](#-contributing)
+- [👤 Author](#-author)
+- [🧾 License](#-license)
+- [🏁 Future Improvements](#-future-improvements)
 
 ---
 
@@ -92,13 +122,60 @@ This project was built as a **hands-on showcase** of my full-stack Adobe Commerc
 
 ---
 
-## 👤 Author
-Gustavo Dauer (gustavo.dauer@hotmail.com)
-- 💼 Adobe Commerce Developer
-- 🌐 Linkedin: https://www.linkedin.com/in/gustavo-vicente-dauer/?locale=en_US
+## 🧪 Example Use Cases
+
+This portfolio project can serve multiple practical purposes:
+- 🎓 **Technical Demonstration:** Showcase my Adobe Commerce (Magento 2) development skills for interviews and professional evaluations.
+- 🧱 **Reference Implementation:** Use it as a starting point for building or structuring my own Adobe Commerce's custom modules.
+- 🧠 **Learning Resource:** Understand key architectural patterns in Adobe Commerce’s backend and frontend development.
+- ⚙️ **Best Practices Example:** Illustrates clean code organization, dependency injection, asynchronous processing, and UI customization.
 
 ---
+
+## 🤝 Contributing
+
+Contributions, feedback, and suggestions are always welcome!
+
+If you'd like to contribute:
+
+1. **Fork** the repository.
+2. Create a new feature branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   git commit -S -m "feature: your feature description"
+   git push origin feature/your-feature-name
+   ```
+
+---
+
+## 👤 Author
+
+**Gustavo Dauer**  
+💼 *Adobe Commerce Developer*  
+📧 [gustavo.dauer@hotmail.com](mailto:gustavo.dauer@hotmail.com)  
+🌐 [LinkedIn](https://www.linkedin.com/in/gustavo-vicente-dauer/?locale=en_US)
+
+---
+
 ## 🧾 License
 
-This project is open-sourced and provided for educational and portfolio purposes.
-All Adobe Commerce trademarks are property of Adobe Inc.
+This project is open-sourced and provided for educational and portfolio purposes only.  
+All **Adobe Commerce** trademarks are the property of **Adobe Inc.**
+
+---
+
+## 🏁 Future Improvements
+
+Planned enhancements for future updates:
+
+- 🧪 Add automated tests (unit and integration) using PHPUnit
+- 🐳 Includes a Docker environment for simplified setup
+- 🖼️ Add screenshots or UI previews for better visual context
+- 📘 Add architecture diagrams to illustrate system flow
+- 🌐 Create monorepo structure for each feature
+- 🔐 New Backlog for new features
+
+---
+
+> *Built with passion for clean, scalable, and well-structured Adobe Commerce solutions.*
+> 
