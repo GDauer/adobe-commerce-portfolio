@@ -10,8 +10,9 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Back to list button.
+ * @codeCoverageIgnore
  */
-readonly class CancelButton extends GenericButton implements ButtonProviderInterface
+class CancelButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * @return array

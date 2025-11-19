@@ -14,7 +14,7 @@ use Magento\Framework\Exception\LocalizedException;
 /**
  * Cron Job to schedule to queue.
  */
-readonly class SendReviewReminderItemsToQueue
+class SendReviewReminderItemsToQueue
 {
     /**
      * Construct method.
@@ -25,10 +25,10 @@ readonly class SendReviewReminderItemsToQueue
      * @param int $batchSize
      */
     public function __construct(
-        private Scheduler $scheduler,
-        private GetCustomerListForDispatchCommandInterface $getCustomerListForDispatchCommand,
-        private GetQueueDataCommandInterface $getQueueDataCommand,
-        private int $batchSize
+        private readonly Scheduler $scheduler,
+        private readonly GetCustomerListForDispatchCommandInterface $getCustomerListForDispatchCommand,
+        private readonly GetQueueDataCommandInterface $getQueueDataCommand,
+        private readonly int $batchSize
     ) {
 
     }
@@ -54,20 +54,18 @@ readonly class SendReviewReminderItemsToQueue
                     'customer_email' => $data['customer_email'],
                     'sku' => $data['sku'],
                     'name' => $data['name'],
+                    'store_id' => $data['store_id']
                 ];
 
                 if (count($payload) >= $this->batchSize) {
-                    $this->scheduler->execute($payload);
+                    $this->scheduler->execute($payload, $reviewReminder->getEntityIdentifier());
                     $payload = [];
                 }
             }
 
             if (!empty($payload)) {
-                var_dump($payload);
-                $this->scheduler->execute($payload);
+                $this->scheduler->execute($payload, $reviewReminder->getEntityIdentifier());
             }
-
-            //Trocar flag de email
         }
     }
 }

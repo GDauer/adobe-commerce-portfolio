@@ -16,6 +16,7 @@ use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Post action to save Review settings.
+ * @codeCoverageIgnore
  */
 class Save extends Action implements HttpPostActionInterface
 {

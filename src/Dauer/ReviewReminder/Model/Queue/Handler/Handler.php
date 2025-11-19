@@ -7,23 +7,26 @@ declare(strict_types=1);
 namespace Dauer\ReviewReminder\Model\Queue\Handler;
 
 use Dauer\ReviewReminderApi\Api\Command\Mail\SentReviewReminderMailInterface;
+use Dauer\ReviewReminderApi\Api\ReviewReminderRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Consumer for queue.
  */
-readonly class Handler
+class Handler
 {
     /**
      * Construct method.
      *
      * @param SerializerInterface $serializer
      * @param SentReviewReminderMailInterface $sentReviewReminderMail
+     * @param ReviewReminderRepositoryInterface $reviewReminderRepository
      */
     public function __construct(
-        private SerializerInterface $serializer,
-        private SentReviewReminderMailInterface $sentReviewReminderMail
+        private readonly SerializerInterface $serializer,
+        private readonly SentReviewReminderMailInterface $sentReviewReminderMail,
+        private readonly ReviewReminderRepositoryInterface $reviewReminderRepository
     ) {
 
     }
@@ -44,5 +47,10 @@ readonly class Handler
             $customerData['customer_name'] = $customerData['customer_firstname'] . ' ' . $customerData['customer_lastname'];
             $this->sentReviewReminderMail->execute($customerData);
         }
+
+        $review = $this->reviewReminderRepository->getReviewReminder((int) $topicData['review_id']);
+
+        $review->setEmailUsed(true);
+        $this->reviewReminderRepository->saveReviewReminder($review);
     }
 }

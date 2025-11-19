@@ -11,8 +11,9 @@ use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 
 /**
  * Customer Group options
+ * @codeCoverageIgnore
  */
-class CustomerGroupOptions implements OptionSourceInterface
+readonly class CustomerGroupOptions implements OptionSourceInterface
 {
     /**
      * Construct method.
@@ -20,7 +21,7 @@ class CustomerGroupOptions implements OptionSourceInterface
      * @param CollectionFactory $groupCollectionFactory
      */
     public function __construct(
-        private readonly CollectionFactory $groupCollectionFactory
+        private CollectionFactory $groupCollectionFactory
     ) {
     }
 

@@ -20,6 +20,8 @@ class ConfigProviderTest extends TestCase
 {
     private ScopeConfigInterface $scopeConfig;
     private EditorConfigDataInterfaceFactory $configDataInterfaceFactory;
+
+    private TestSubject $testSubject;
     private array $plugins;
     private array $additionalSettings;
 

@@ -10,8 +10,9 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Save entity button.
+ * @codeCoverageIgnore
  */
-readonly class SaveButton extends GenericButton implements ButtonProviderInterface
+class SaveButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * Retrieve Save button settings.

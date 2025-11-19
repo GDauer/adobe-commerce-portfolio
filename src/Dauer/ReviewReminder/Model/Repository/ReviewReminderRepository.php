@@ -19,7 +19,7 @@ use Magento\Framework\Api\Search\SearchCriteriaInterface;
  *
  * @codeCoverageIgnore Don't need to test a class without logic.
  */
-readonly class ReviewReminderRepository implements ReviewReminderRepositoryInterface
+class ReviewReminderRepository implements ReviewReminderRepositoryInterface
 {
     /**
      * Construct method.
@@ -30,10 +30,10 @@ readonly class ReviewReminderRepository implements ReviewReminderRepositoryInter
      * @param GetListReviewReminderCommandInterface $getListReviewReminderCommand
      */
     public function __construct(
-        private GetReviewReminderCommandInterface $getReviewReminderCommand,
-        private SaveReviewReminderCommandInterface $saveReviewReminderCommand,
-        private DeleteReviewReminderCommandInterface $deleteReviewReminderCommand,
-        private GetListReviewReminderCommandInterface $getListReviewReminderCommand
+        private readonly GetReviewReminderCommandInterface $getReviewReminderCommand,
+        private readonly SaveReviewReminderCommandInterface $saveReviewReminderCommand,
+        private readonly DeleteReviewReminderCommandInterface $deleteReviewReminderCommand,
+        private readonly GetListReviewReminderCommandInterface $getListReviewReminderCommand
     ) {
     }
 

@@ -14,6 +14,7 @@ use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Load form component
+ * @codeCoverageIgnore
  */
 class Edit extends Action implements HttpGetActionInterface
 {

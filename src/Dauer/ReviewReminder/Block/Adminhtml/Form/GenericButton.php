@@ -10,8 +10,9 @@ use Magento\Backend\Block\Widget\Context;
 
 /**
  * Class GenericButton
+ * @codeCoverageIgnore
  */
-readonly class GenericButton
+class GenericButton
 {
     /**
      * Class construct.

@@ -9,11 +9,12 @@ namespace Dauer\ReviewReminder\Model\Command\Mail;
 use Dauer\ReviewReminderApi\Api\Command\Mail\SentReviewReminderMailInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Sent mail message command
  */
-readonly class SentReviewReminderMail implements SentReviewReminderMailInterface
+class SentReviewReminderMail implements SentReviewReminderMailInterface
 {
     /**
      * Construct method.
@@ -22,8 +23,8 @@ readonly class SentReviewReminderMail implements SentReviewReminderMailInterface
      * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        private TransportBuilder $transportBuilder,
-        private ScopeConfigInterface $scopeConfig
+        private readonly TransportBuilder $transportBuilder,
+        private readonly ScopeConfigInterface $scopeConfig
     ) {
     }
 
@@ -32,15 +33,24 @@ readonly class SentReviewReminderMail implements SentReviewReminderMailInterface
      */
     public function execute(array $templateVars): void
     {
-        $emailTemplate = $this->scopeConfig->getValue('review/email/review_mail/template');
-        $emailSender = $this->scopeConfig->getValue('review/email/review_mail/identity');
+        $emailTemplate = $this->scopeConfig->getValue(
+            'review/email/review_mail/template',
+            ScopeInterface::SCOPE_STORE,
+            $templateVars['store_id']
+        );
+        $emailSender = $this->scopeConfig->getValue(
+            'review/email/review_mail/identity',
+            ScopeInterface::SCOPE_STORE,
+            $templateVars['store_id']
+        );
 
-        $transport = $this->transportBuilder->setTemplateIdentifier($emailTemplate)
-            ->setTemplateOptions(['area' => 'frontend', 'store' => 0])
-            ->setTemplateVars($templateVars)
-            ->setFromByScope($emailSender)
-            ->addTo($templateVars['customer_email'])
-            ->getTransport();
+        $this->transportBuilder->setTemplateIdentifier($emailTemplate);
+        $this->transportBuilder->setTemplateOptions(['area' => 'frontend', 'store' => $templateVars['store_id']]);
+        $this->transportBuilder->setTemplateVars($templateVars);
+        $this->transportBuilder->setFromByScope($emailSender);
+        $this->transportBuilder->addTo($templateVars['customer_email']);
+
+        $transport = $this->transportBuilder->getTransport();
 
         $transport->sendMessage();
     }

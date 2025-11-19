@@ -12,6 +12,7 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * Collection.
+ * @codeCoverageIgnore
  */
 class Collection extends AbstractCollection
 {

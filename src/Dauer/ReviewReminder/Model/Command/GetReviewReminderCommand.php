@@ -6,13 +6,14 @@ declare(strict_types=1);
 
 namespace Dauer\ReviewReminder\Model\Command;
 
-use Dauer\ReviewReminder\Model\ReviewReminder;
 use Dauer\ReviewReminder\Model\ReviewReminderFactory;
-use Dauer\ReviewReminder\Model\ResourceModel\ReviewReminderResource;
 use Dauer\ReviewReminder\Model\ResourceModel\ReviewReminderResourceFactory;
 use Dauer\ReviewReminderApi\Api\Command\GetReviewReminderCommandInterface;
 use Dauer\ReviewReminderApi\Api\Data\ReviewReminderInterface;
 
+/**
+ * Get a review reminder command.
+ */
 class GetReviewReminderCommand implements GetReviewReminderCommandInterface
 {
     /**
@@ -32,9 +33,7 @@ class GetReviewReminderCommand implements GetReviewReminderCommandInterface
      */
     public function execute(int $entityId): ReviewReminderInterface
     {
-        /** @var ReviewReminder $emptyModel */
         $emptyModel = $this->reviewReminderFactory->create();
-        /** @var ReviewReminderResource $resource */
         $resource = $this->resourceModelFactory->create();
 
         $resource->load($emptyModel, $entityId);

@@ -13,6 +13,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
  * Class DeleteAction
+ * @codeCoverageIgnore
  */
 class DeleteAction extends Column
 {

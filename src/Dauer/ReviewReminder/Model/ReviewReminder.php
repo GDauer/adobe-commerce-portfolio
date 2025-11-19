@@ -13,6 +13,7 @@ use Magento\Framework\Model\AbstractModel;
 
 /**
  * Model class
+ * @codeCoverageIgnore
  */
 class ReviewReminder extends AbstractModel implements ReviewReminderInterface
 {

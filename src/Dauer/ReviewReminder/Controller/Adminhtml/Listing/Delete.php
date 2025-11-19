@@ -16,6 +16,7 @@ use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Post action to save Review settings.
+ * @codeCoverageIgnore
  */
 class Delete extends Action implements HttpGetActionInterface
 {

@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Dauer\ReviewReminder\Model\Queue;
 
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\MessageQueue\Publisher;
 use Magento\Framework\Serialize\SerializerInterface;
 
@@ -16,7 +15,7 @@ use Magento\Framework\Serialize\SerializerInterface;
  */
 class Scheduler
 {
-    private const TOPIC_NAME = 'dauer.review.reminder';
+    private const string TOPIC_NAME = 'dauer.review.reminder';
 
     /**
      * @param Publisher $publisher
@@ -24,9 +23,9 @@ class Scheduler
      * @param SerializerInterface $serializer
      */
     public function __construct(
-        private Publisher $publisher,
-        private IdentityGeneratorInterface $identityGenerator,
-        private SerializerInterface $serializer
+        private readonly Publisher $publisher,
+        private readonly IdentityGeneratorInterface $identityGenerator,
+        private readonly SerializerInterface $serializer
     ) {
     }
 
@@ -34,16 +33,18 @@ class Scheduler
      * Schedule reminder job.
      *
      * @param array $customerData ['email', 'name', 'product']
+     * @param int $reviewId
      *
      * @return void
      */
-    public function execute(array $customerData): void
+    public function execute(array $customerData, int $reviewId): void
     {
         $bulkUuid = $this->identityGenerator->generateId();
         $data = [
             'data' => [
                 'bulk_uuid' => $bulkUuid,
                 'topic_name' => self::TOPIC_NAME,
+                'review_id' => $reviewId,
                 'customer_data' => $customerData
             ]
         ];

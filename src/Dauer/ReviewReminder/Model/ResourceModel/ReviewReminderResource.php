@@ -11,6 +11,7 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
  * Resource Class
+ * @codeCoverageIgnore
  */
 class ReviewReminderResource extends AbstractDb
 {

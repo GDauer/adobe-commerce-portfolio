@@ -14,6 +14,7 @@ use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Listing action
+ * @codeCoverageIgnore
  */
 class Index extends Action implements HttpGetActionInterface
 {

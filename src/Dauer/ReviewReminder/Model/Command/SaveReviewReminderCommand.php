@@ -34,7 +34,6 @@ class SaveReviewReminderCommand implements SaveReviewReminderCommandInterface
     public function execute(ReviewReminderInterface $reviewReminder): ReviewReminderInterface
     {
         try {
-            /** @var ReviewReminderResource $resource */
             $resource = $this->resourceModelFactory->create();
             $resource->save($reviewReminder);
 
